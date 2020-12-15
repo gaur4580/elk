@@ -1,0 +1,19 @@
+- name: Kibana Instalation
+  hosts: node3
+  roles:
+    - role: kibana
+      kibana_ssl_cert: "/root/cert/my-kibana/my-kibana.crt"
+      kibana_ssl_key: "/root/cert/my-kibana/my-kibana.key"
+      kibana_ssl_auth: "/root/cert/ca/ca.crt"
+      es_version: 7.10.1
+      kibana_config:
+        server.name: "{{ inventory_hostname }}"
+        server.port: 5601
+        server.host: "{{ ansible_default_ipv4.address }}"
+        elasticsearch.username: "kibana"
+        elasticsearch.password: "Elastic@123"
+        server.ssl.enabled: true
+        server.ssl.certificate: "/etc/kibana/certs/my-kibana.crt"
+        server.ssl.key: "/etc/kibana/certs/my-kibana.key"
+        elasticsearch.ssl.certificateAuthorities:  "/etc/kibana/certs/ca.crt" 
+        elasticsearch.hosts: "https://node1.elastic.test.com:9200"

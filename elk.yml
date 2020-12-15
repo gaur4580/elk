@@ -1,0 +1,110 @@
+- hosts: node1
+  roles:
+    - role: kibana
+    kibana_config:
+        server.name: "{{ inventory_hostname }}"
+        server.port: 5601
+        server.host: "{{ ansible_default_ipv4.address }}"
+        elasticsearch.hosts: "https://node1.elastic.test.com:9200"
+        elasticsearch.username: "kibana"
+        elasticsearch.password: "Elastic@123"
+
+- hosts: node1
+  roles:
+    - role: elastic.elasticsearch
+  vars:
+    es_enable_xpack: true
+    es_data_dirs:
+      - "/data/elasticsearch/data"
+    es_log_dir: "/data/elasticsearch/logs"
+    es_path_repo: "/data/elasticsearch/backup"
+    es_java_install: true
+    es_heap_size: "1g"
+    es_ssl_certificate_authority: /root/cert/ca/ca.crt
+    es_ssl_key: /root/cert/node1/node1.key
+    es_ssl_certificate: /root/cert/node1/node1.crt
+    es_enable_http_ssl: true
+    es_enable_auto_ssl_configuration: true
+    es_api_basic_auth_username: "elastic"
+    es_api_basic_auth_password: "Elastic@123"
+    es_enable_transport_ssl: true 
+    es_enable_auto_ssl_configuration: true
+    es_xpack_features: []
+    es_config:
+      cluster.name: "elk-cluster"
+      cluster.initial_master_nodes: "node1"
+      discovery.seed_hosts: "node1.elastic.test.com , node2.elastic.test.com , node3.elastic.test.com"
+      http.port: 9200
+      node.data: true
+      node.master: true
+      bootstrap.memory_lock: false
+      network.host: '0.0.0.0'
+    es_plugins:
+     - plugin: ingest-attachment
+
+- hosts: node2
+  roles:
+    - role: elastic.elasticsearch
+  vars:
+    es_enable_xpack: true
+    es_data_dirs:
+      - "/data/elasticsearch/data"
+    es_log_dir: "/data/elasticsearch/logs"
+    es_path_repo: "/data/elasticsearch/backup"
+    es_java_install: true
+    es_heap_size: "1g"
+    es_ssl_certificate_authority: /root/cert/ca/ca.crt
+    es_ssl_key: /root/cert/node2/node2.key
+    es_ssl_certificate: /root/cert/node2/node2.crt
+    es_enable_http_ssl: true
+    es_enable_auto_ssl_configuration: true
+    es_api_basic_auth_username: "elastic"
+    es_api_basic_auth_password: "Elastic@123"
+    es_enable_transport_ssl: true 
+    es_enable_auto_ssl_configuration: true
+    es_xpack_features: []
+    es_config:
+      cluster.name: "elk-cluster"
+      cluster.initial_master_nodes: "node1"
+      discovery.seed_hosts: "node1.elastic.test.com , node2.elastic.test.com , node3.elastic.test.com"
+      http.port: 9200
+      node.data: true
+      node.master: true
+      bootstrap.memory_lock: false
+      network.host: '0.0.0.0'
+    es_plugins:
+     - plugin: ingest-attachment
+
+- hosts: node1
+  roles:
+    - role: elastic.elasticsearch
+  vars:
+    es_enable_xpack: true
+    es_data_dirs:
+      - "/data/elasticsearch/data"
+    es_log_dir: "/data/elasticsearch/logs"
+    es_path_repo: "/data/elasticsearch/backup"
+    es_java_install: true
+    es_heap_size: "1g"
+    es_ssl_certificate_authority: /root/cert/ca/ca.crt
+    es_ssl_key: /root/cert/node3/node3.key
+    es_ssl_certificate: /root/cert/node3/node3.crt
+    es_enable_http_ssl: true
+    es_enable_auto_ssl_configuration: true
+    es_api_basic_auth_username: "elastic"
+    es_api_basic_auth_password: "Elastic@123"
+    es_enable_transport_ssl: true 
+    es_enable_auto_ssl_configuration: true
+    es_xpack_features: []
+    es_config:
+      cluster.name: "elk-cluster"
+      cluster.initial_master_nodes: "node1"
+      discovery.seed_hosts: "node1.elastic.test.com , node2.elastic.test.com , node3.elastic.test.com"
+      http.port: 9200
+      node.data: true
+      node.master: true
+      bootstrap.memory_lock: false
+      network.host: '0.0.0.0'
+    es_plugins:
+     - plugin: ingest-attachment
+
