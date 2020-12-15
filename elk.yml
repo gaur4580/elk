@@ -64,7 +64,7 @@
     es_plugins:
      - plugin: ingest-attachment
 
-- hosts: node1
+- hosts: node3
   roles:
     - role: elastic.elasticsearch
   vars:
