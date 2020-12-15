@@ -99,8 +99,7 @@
 # Copy the systemd specific file if systemd is installed
 - name: Copy Systemd File for Instance
   become: yes
-  template: src=systemd/kibana.j2 dest={{ instance_sysd_script }} mode=0644 force=yes
-  when: use_system_d | bool
+  template: src=systemd/kibana.j2 dest=/etc/systemd/system/kibana.service mode=0644 force=yes
   notify:
     - reload systemd configuration
     - restart kibana
