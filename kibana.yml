@@ -1,5 +1,5 @@
 - name: Kibana Instalation
-  hosts: node1
+  hosts: node2
   roles:
     - role: kibana
       kibana_ssl_cert: "/tmp/elk/uat/kibana/kibana.crt"
@@ -16,4 +16,4 @@
         server.ssl.certificate: "/etc/kibana/certs/kibana.crt"
         server.ssl.key: "/etc/kibana/certs/kibana.key"
         elasticsearch.ssl.certificateAuthorities:  "/etc/kibana/certs/ca.crt" 
-        elasticsearch.hosts: "https://node1.elastic.test.com:9200"
+        elasticsearch.hosts: "https://node1.elastic.uat.net:9200"

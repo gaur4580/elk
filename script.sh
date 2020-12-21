@@ -1,13 +1,13 @@
-node1=""
-node2=""
-node3=""
+node1="10.10.94.140"
+node2="10.10.94.141"
+node3="10.10.94.142"
 sudo apt-add-repository --yes --update ppa:ansible/ansible
 sudo apt update -y
 sudo apt install ansible -y 
 sudo apt-get install python-jmespath zip unzip git -y
 echo '[defaults]
-private_key_file = /root/pem
-remote_user = ubuntu
+private_key_file = /root/.ssh/id_rsa
+remote_user = root
 host_key_checking=False' | sudo tee  /etc/ansible/ansible.cfg
 
 cd /tmp/

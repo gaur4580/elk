@@ -22,7 +22,7 @@
     es_config:
       cluster.name: "elk-cluster"
       cluster.initial_master_nodes: "node1"
-      discovery.seed_hosts: "node1.elastic.test.com , node2.elastic.test.com , node3.elastic.test.com"
+      discovery.seed_hosts: "node1.elastic.uat.net , node2.elastic.uat.net , node3.elastic.uat.net"
       http.port: 9200
       node.data: true
       node.master: true
@@ -55,7 +55,7 @@
     es_config:
       cluster.name: "elk-cluster"
       cluster.initial_master_nodes: "node1"
-      discovery.seed_hosts: "node1.elastic.test.com , node2.elastic.test.com , node3.elastic.test.com"
+      discovery.seed_hosts: "node1.elastic.uat.net , node2.elastic.uat.net , node3.elastic.uat.net"
       http.port: 9200
       node.data: true
       node.master: true
@@ -88,7 +88,7 @@
     es_config:
       cluster.name: "elk-cluster"
       cluster.initial_master_nodes: "node1"
-      discovery.seed_hosts: "node1.elastic.test.com , node2.elastic.test.com , node3.elastic.test.com"
+      discovery.seed_hosts: "node1.elastic.uat.net , node2.elastic.uat.net , node3.elastic.uat.net"
       http.port: 9200
       node.data: true
       node.master: true
